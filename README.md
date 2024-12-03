@@ -2,6 +2,8 @@
 
 過程中使用富果API抓取資料以及進行交易
 
+```Disclaimer: 本文僅供教學與參考之用，實務交易應自行評估並承擔相關風險```
+
 ## 書本連結
 
 [Algorithmic Trading: Winning Strategies and Their Rationale](https://www.google.com/search?q=algorithmic+trading%3A+winning+strategies+and+their+rationale&rlz=1C5CHFA_enTW990TW990&oq=al&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRhAMgYIAhBFGDkyBggDEEUYOzIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEHOTcyajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8)<br>
