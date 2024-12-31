@@ -1,5 +1,5 @@
-""""
-Version 1.0
+"""
+Disillusion v1.0
 2024-12-18 FJ Hsu 徐晨耀 erichsu5168@gmail.com
 
 *** WARNING: This framework is only for testing purposes only, and I do not claim that it is by any means representative of live-trading. I am not liable for any inaccuracies and misleading results generated. USE AT YOUR OWN RISK. ***
@@ -195,33 +195,34 @@ class Engine:
         """
         return self.data.loc[self.current_idx][ticker]
 
-    def _process_buy(self):
+    def _process_buy(self, order):
         """
         Processes buy orders. Updates cash and positions. Gives warning if there is insufficient cash and does not execute order.
+        :param order: Order object.
         :return: None
         """
-        for i in self.strategy.orders:
-            if i.side == 'buy':
-                if self.cash > self.get_current_price(i.ticker)*i.size*1000*(1+self.TRADE_FEE):
-                    self.cash -= self.get_current_price(i.ticker)*i.size*1000*(1+self.TRADE_FEE)
-                    self.positions.append(
-                        Position(
-                            ticker = i.ticker,
-                            side = 'long',
-                            size = i.size,
-                            idx = self.current_idx
+        if order.side == 'buy':
+            if self.cash > self.get_current_price(order.ticker)*order.size*1000*(1+self.TRADE_FEE):
+                self.cash -= self.get_current_price(order.ticker)*order.size*1000*(1+self.TRADE_FEE)
+                self.positions.append(
+                    Position(
+                        ticker = order.ticker,
+                        side = 'long',
+                        size = order.size,
+                        idx = self.current_idx
                         )
                     )
-                    print(f'Buy Executed for {i.size} shares of {i.ticker} at {self.current_idx}.')
-                else:
-                    print(f'Buy Not Executed for {i.size} shares of {i.ticker} at {self.current_idx}: Insufficient Cash.')
+                print(f'Buy Executed for {order.size} shares of {order.ticker} at {self.current_idx}.')
+            else:
+                print(f'Buy Not Executed for {order.size} shares of {order.ticker} at {self.current_idx}: Insufficient Cash.')
 
-    def _process_sell(self):
+    def _process_sell(self, sell):
         """
         Processes sell orders. Checks if there are enough open long positions to close out, if not, it prints a warning and does not execute order. Positions are closed out if they do not meet the size of the order and a later position is processed. If position has a larger size than the order, the position will be closed out and another position is opened with an identical starting time and for the remaining size. Positions closed out will have a closing time stored.
+        :param sell: Order object.
         :return: None
         """
-        for sell in [i for i in self.strategy.orders if i.side == 'sell']:
+        if sell.side == 'sell':
             if sell.size <= sum([i.size for i in self.positions if i.side == 'long' and i.active == True and i.ticker == sell.ticker]):
                 print(f'Sell Executed for {sell.size} shares of {sell.ticker} at {self.current_idx}.')
                 for position in [i for i in self.positions if i.side == 'long' and i.active == True and i.ticker == sell.ticker]:
@@ -251,12 +252,13 @@ class Engine:
             else:
                 print(f'Sell Not Executed for {sell.size} shares of {sell.ticker} at {self.current_idx}: Insufficient Shares')
 
-    def _process_short_in(self):
+    def _process_short_in(self, short):
         """
         Processes short orders. Checks if there are sufficient funds to execute order (Cash has to be larger than the initial margin), if not, it prints a warning and does not execute order. Margin and security are stored in the position for calculations incurred when the position is closed out.
+        :param short: Order object.
         :return: None
         """
-        for short in [i for i in self.strategy.orders if i.side == 'short_in']:
+        if short.side == 'short_in':
             margin = short.size*1000*self.get_current_price(short.ticker)*0.9
             if self.cash >= margin:
                 security = short.size*1000*self.get_current_price(short.ticker)*(1-self.TRADE_FEE-self.TRADE_TAX-self.BORROW_FEE)
@@ -275,12 +277,13 @@ class Engine:
             else:
                 print(f'Short Not Executed for {short.size} shares of {short.ticker} at {self.current_idx}: Insufficient Cash')
 
-    def _process_short_out(self):
+    def _process_short_out(self, short):
         """
         Processes short orders. Checks if there are sufficient shares to execute order, if not, it prints a warning and does not execute order. Positions are closed out if they do not meet the size of the order and a later position is processed. If position has a larger size than the order, the position will be closed out and another position is opened with an identical starting time and for the remaining size. Positions closed out will have a closing time stored.
+        :param short: Order object.
         :return: None
         """
-        for short in [i for i in self.strategy.orders if i.side == 'short_out']:
+        if short.side == 'short_out':
             if short.size <= sum([i.size for i in self.positions if i.ticker == short.ticker and i.side == 'short' and i.active == True]):
                 print(f'Short Closed for {short.size} shares of {short.ticker} at {self.current_idx}.')
                 for position in [i for i in self.positions if i.ticker == short.ticker and i.side == 'short' and i.active == True]:
@@ -289,16 +292,16 @@ class Engine:
                         position.close_idx = self.current_idx
                         buy = position.size*1000*self.get_current_price(position.ticker)*(1+self.TRADE_FEE)
                         interest = (position.margin+position.security)*self.BORROW_FEE*(self.current_idx-position.idx).days/365
-                        self.cash = self.cash + position.security - buy + interest + position.deposit
+                        self.cash = self.cash + position.security - buy + interest + position.margin
                         short.size -= position.size
-                        position.deposit = 0
+                        position.margin = 0
                         position.security = 0
                     elif position.size > short.size:
                         position.active = False
                         position.close_idx = self.current_idx
                         buy = short.size*1000*self.get_current_price(position.ticker)*(1+self.TRADE_FEE)
                         interest = (position.margin+position.security)*short.size/position.size*self.BORROW_FEE*(self.current_idx-position.idx).days/365
-                        self.cash = self.cash + position.security*short.size/position.size - buy + interest + position.deposit*short.size/position.size
+                        self.cash = self.cash + position.security*short.size/position.size - buy + interest + position.margin*short.size/position.size
                         self.positions.append(
                             Position(
                                 ticker = short.ticker,
@@ -361,10 +364,12 @@ class Engine:
         :return: None
         """
         self._check_margin_call() # Margin calls should be checked on new prices before any new orders from the strategy are processed.
-        self._process_buy()
-        self._process_sell()
-        self._process_short_in()
-        self._process_short_out()
+        # Orders are processed in sequence generated.
+        for order in self.strategy.orders:
+            self._process_buy(order)
+            self._process_sell(order)
+            self._process_short_in(order)
+            self._process_short_out(order)
         self.strategy.orders = [] # Orders in the strategy are cleaned out after they are processed.
         self._update_max_cash_deployed()
         self._update_portfolio_mv()
@@ -379,7 +384,6 @@ class Engine:
         for idx in tqdm(self.data.index):
             self.current_idx = idx
             self.strategy.current_idx = self.current_idx
-            print(idx) # Printing the timestamp on each bar can help us find where problems have occurred in the backtest more efficiently.
             # Run the strategy on the current bar
             self.strategy.on_bar()
             self._fill_orders()
