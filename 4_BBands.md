@@ -62,7 +62,7 @@ df.plot()
 
 
     
-![png](4_BBands_files/4_BBands_4_2.png)
+![png](4_BBands_1.png)
     
 
 
@@ -108,7 +108,7 @@ result.plot.line(y='port')
 
 
     
-![png](4_BBands_files/4_BBands_7_1.png)
+![png](4_BBands_2.png)
     
 
 
@@ -160,7 +160,7 @@ result.plot(y=['port', 'bb_up', 'bb_down'])
 
 
     
-![png](4_BBands_files/4_BBands_11_2.png)
+![png](4_BBands_3.png)
     
 
 
@@ -183,7 +183,7 @@ result.plot.line(y='real')
 
 
     
-![png](4_BBands_files/4_BBands_13_1.png)
+![png](4_BBands_4.png)
     
 
 
@@ -280,7 +280,7 @@ test.plot.line(y='pv')
 
 
     
-![png](4_BBands_files/4_BBands_19_1.png)
+![png](4_BBands_5.png)
     
 
 
@@ -308,7 +308,7 @@ test.plot.line(y=['port','mv_avg','bb_up','bb_low'])
 
 
     
-![png](4_BBands_files/4_BBands_21_2.png)
+![png](4_BBands_6.png)
     
 
 
@@ -424,7 +424,7 @@ test.plot.line(y='pv')
 
 
     
-![png](4_BBands_files/4_BBands_28_1.png)
+![png](4_BBands_7.png)
     
 
 
@@ -479,7 +479,7 @@ field.plot.line(y='port')
 
 
     
-![png](4_BBands_files/4_BBands_32_1.png)
+![png](4_BBands_8.png)
     
 
 
@@ -560,7 +560,7 @@ field.plot.line(y='pv')
 
 
     
-![png](4_BBands_files/4_BBands_35_1.png)
+![png](4_BBands_9.png)
     
 
 
@@ -586,7 +586,7 @@ field.plot.line(y=['port','mv_avg','bb_up','bb_low'])
 
 
     
-![png](4_BBands_files/4_BBands_36_2.png)
+![png](4_BBands_10.png)
     
 
 
