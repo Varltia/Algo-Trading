@@ -83,7 +83,7 @@ df.plot()
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_1.png)
+![png](5_KalmanFilter_1.png)
     
 
 
@@ -137,7 +137,7 @@ df.plot.line(y='port')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_2.png)
+![png](5_KalmanFilter_2.png)
     
 
 
@@ -236,7 +236,7 @@ df.plot.line(y='control_port')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_3.png)
+![png](5_KalmanFilter_3.png)
     
 
 
@@ -256,7 +256,7 @@ df.plot.line(y='intercept')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_4.png)
+![png](5_KalmanFilter_4.png)
     
 
 
@@ -276,7 +276,7 @@ df.plot.line(y='slope')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_5.png)
+![png](5_KalmanFilter_5.png)
     
 
 
@@ -325,7 +325,7 @@ df.plot.line(y=['Q_up', 'e', 'Q_low'], ylim=[-4, 8])
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_6.png)
+![png](5_KalmanFilter_6.png)
     
 
 
@@ -537,7 +537,7 @@ results.plot.line(y='mv')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_7.png)
+![png](5_KalmanFilter_7.png)
     
 
 
@@ -603,7 +603,7 @@ df_BB.plot.line(y=['port', 'BB_low', 'mv_avg', 'BB_up'])
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_8.png)
+![png](5_KalmanFilter_8.png)
     
 
 
@@ -725,7 +725,7 @@ df_BB.plot.line(y='mv')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_9.png)
+![png](5_KalmanFilter_9.png)
     
 
 
@@ -781,7 +781,7 @@ cv_kf.plot()
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_10.png)
+![png](5_KalmanFilter_10.png)
     
 
 
@@ -932,7 +932,7 @@ cv_kf.plot.line(y='control_port')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_11.png)
+![png](5_KalmanFilter_11.png)
     
 
 
@@ -950,7 +950,7 @@ cv_kf.plot.line(y='slope')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_12.png)
+![png](5_KalmanFilter_12.png)
     
 
 
@@ -968,7 +968,7 @@ cv_kf.plot.line(y='intercept')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_13.png)
+![png](5_KalmanFilter_13.png)
     
 
 
@@ -996,7 +996,7 @@ cv_kf.plot.line(y=['Q_up', 'e', 'Q_low'])
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_14.png)
+![png](5_KalmanFilter_14.png)
     
 
 
@@ -1113,7 +1113,7 @@ cv_kf.plot.line(y='mv')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_15.png)
+![png](5_KalmanFilter_15.png)
     
 
 
@@ -1162,7 +1162,7 @@ cv_BB.plot.line(y='port')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_16.png)
+![png](5_KalmanFilter_16.png)
     
 
 
@@ -1192,7 +1192,7 @@ cv_BB.plot.line(y=['port', 'BB_low', 'mv_avg', 'BB_up'])
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_17.png)
+![png](5_KalmanFilter_17.png)
     
 
 
@@ -1258,7 +1258,7 @@ cv_BB.plot.line(y='mv')
 
 
     
-![png](5_KalmanFilter_files/5_KalmanFilter_18.png)
+![png](5_KalmanFilter_18.png)
     
 
 
