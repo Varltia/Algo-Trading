@@ -4,6 +4,8 @@ Chen-Yao Hsu
 
 During summer break at the end of 2024, I went back to my home country of Taiwan and to visit family and friends. In the meantime, I was fortunate enough to secure an internship at Fortuna Intelligence Co., LTD as a Quantitative analysis intern. The basic objective of my work was to promote the company’s custom WebSocket and trading API in the form of writing basic trading algorithms and performing backtests on chosen Taiwanese assets via python. Below, I have provided some tailored code snippets of my projects as I believe they provide a modest representation of my skills in coding and mathematics applied in finance.
 
+For the complete projects, feel free to browse around this repository and read the README file, although most of it is in Chinese.
+
 ## Backtest Framework
 
 Realizing that there were various downsides in using backtest packages made for U.S. stock markets, and also seeing a chance to hone my coding skills and my understanding of trading, I decided to create my own backtesting framework tailored to the Taiwanese Stock Exchange. I have pasted its entirety below.
@@ -498,7 +500,7 @@ df_result.plot.line(y='port')
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_6_2.png)
+![png](Project Introduction_1.png)
     
 
 
@@ -570,7 +572,7 @@ df.plot()
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_12_2.png)
+![png](Project Introduction_2.png)
     
 
 
@@ -615,7 +617,7 @@ df.plot.line(y='port')
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_16_1.png)
+![png](Project Introduction_3.png)
     
 
 
@@ -698,7 +700,7 @@ df.plot.line(y='control_port')
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_22_1.png)
+![png](Project Introduction_4.png)
     
 
 
@@ -716,7 +718,7 @@ df.plot.line(y='intercept')
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_23_1.png)
+![png](Project Introduction_5.png)
     
 
 
@@ -734,7 +736,7 @@ df.plot.line(y='slope')
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_24_1.png)
+![png](Project Introduction_6.png)
     
 
 
@@ -768,7 +770,7 @@ df.plot.line(y=['Q_up', 'e', 'Q_low'], ylim=[-4, 8])
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_26_2.png)
+![png](Project Introduction_7.png)
     
 
 
@@ -982,7 +984,7 @@ results.plot.line(y='mv')
 
 
     
-![png](Project%20Introduction_files/Project%20Introduction_28_1.png)
+![png](Project Introduction_8.png)
     
 
 
