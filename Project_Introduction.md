@@ -988,7 +988,7 @@ results.plot.line(y='mv')
     
 
 
-Results show that the strategy is profitable (with data-snooping bias) over the five year period. Further in this project, I eliminate data-snooping bias by cross-validation using data from 2024. In addition, I also compare dynamic hedge ratio results to results from a backtest with a fixed hedge ratio. Since the process is does not introduce new techniques and this short introduction is for demonstration purposes only, I will omit the remaining details.
+Results show that the strategy is profitable (with data-snooping bias) over the five year period. Further in this project, I eliminate data-snooping bias by cross-validation using data from 2024. In addition, I also compare dynamic hedge ratio results to results from a backtest with a fixed hedge ratio. Since the process does not introduce new techniques and this short introduction is for demonstration purposes only, I will omit the remaining details.
 
 Thank You for Reading
 
