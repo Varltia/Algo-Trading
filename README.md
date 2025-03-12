@@ -27,6 +27,6 @@
 * [回測套件 Version 1.0 說明文件](00_回測套件.md)   ||  [原始檔案](Disillusion_v1_0.py)（2024-12-31更新，修正 Bug）
 
 
-## For a demonstration of some of the topics and work in this repository please click the link below.
+## For an English demonstration of some of the topics and work in this repository, please click the link below.
 
 [Project Demonstration](Project_Introduction.md)
